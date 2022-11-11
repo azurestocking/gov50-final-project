@@ -27,6 +27,6 @@ library(haven)
 library(ggplot2)
 library(infer)
 
-wellel <- read_dta("data/wellel.dta")
+wellel <- read_dta("wellel.dta")
 ```
 
