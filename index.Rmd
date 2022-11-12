@@ -11,22 +11,4 @@ output:
 
 ## Milestone 2
 
-While a lot of transportation and land use literature relies on the basic logic where the building environment is a determinant for travel modes, Manville (2017) points out, by quoting a meta-analysis by Ewing and Cervero, that there is no solid evidence for the association between changing the building environment and reducing driving and increasing mass transit ridership. To achieve the goal of decreasing per capita driving and hence the congestion, instead of delving into variables such as density, design, diversity, destination accessibility, and distance to transit, it is more important to make transportation for transportation’s sake, namely, bring transportation-based land uses into transportation and land use (Manville 2017). Thus, he suggests an immediate policy agency of charging an appropriate price for public roads and parking spaces, which will otherwise result in more VMT per capita and more severe congestion (Manville 2017). 
-
-MTRC has adopted a design principle that attaches significance to amenities, physical integration, and quality of the walking environments (Cervero 2009). Tsing Yi station, for example, cements a shopping mall with offices, residential towers, pedestrian pathways, and sky bridges (Cervero 2009). Based on his analysis, Cervero (2009) finds that the rail-plus-property model is able to increase the daily ridership of the mass transit railway system by 35,000 passengers via a transit-oriented design where the newly-provided mixed land uses, architectural integration, and walking-friendly environments play a cardinal role in achieving this outcome. Today, it seems arbitrary to suggest a causal relationship between the two variables; or Hong Kong might be a special case where an unmeasured covariate leads to the conclusion, given that these two conflicting papers have an author in common.
-
-Therefore, I am interested in whether some specfic spatial forms relevant to the rail-plus-property model are associated with the mass transit ridership.
-
-
-
-## Milestone 3
-
-```{r}
-library(tidyverse)
-library(haven)
-library(ggplot2)
-library(infer)
-
-wellel <- read_dta("wellel.dta")
-```
-
+Have COVID-19-related burdens led to the standstill in political participation? I hypothesize that the deficient resources and service accessibility during the pandemic have limited men's and women's activities and increased their care obligations at home, thus reducing their capabilities of engaging in political activities. The political participation are categorized as four modes in accordance with the research of van Deth (2014), including institutional participation, protest participation, online participation, and civic engagement. My sample is based on a retrospective survey conducted in autumn 2020 in Germany, covering 3,342 respondents of different ages, genders, education backgrounds, and regions. My unit of analysis is Germany's first nationwide lockdown in Spring 2020. The explanatory variable of interest is the care obligations during the pandemic, measured by categorical scales from 1 (never) to 5 (very often). My outcome variable is the four modes of participation, measured by the same scales. If I observe an ATE is positive, this would provide evidence against my hypothesis. If the ATE is negative, this would support my hypothesis.
