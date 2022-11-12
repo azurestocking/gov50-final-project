@@ -12,3 +12,16 @@ output:
 ## Milestone 2
 
 Have COVID-19-related burdens led to the standstill in political participation? I hypothesize that the deficient resources and service accessibility during the pandemic have limited men's and women's activities and increased their care obligations at home, thus reducing their capabilities of engaging in political activities. The political participation are categorized as four modes in accordance with the research of van Deth (2014), including institutional participation, protest participation, online participation, and civic engagement. My sample is based on a retrospective survey conducted in autumn 2020 in Germany, covering 3,342 respondents of different ages, genders, education backgrounds, and regions. My unit of analysis is Germany's first nationwide lockdown in Spring 2020. The explanatory variable of interest is the care obligations during the pandemic, measured by categorical scales from 1 (never) to 5 (very often). My outcome variable is the four modes of participation, measured by the same scales. If I observe an ATE is positive, this would provide evidence against my hypothesis. If the ATE is negative, this would support my hypothesis.
+
+
+
+## Milestone 3
+
+```{r}
+library(tidyverse)
+library(haven)
+library(ggplot2)
+library(infer)
+
+wellel <- read_dta("wellel.dta")
+```
