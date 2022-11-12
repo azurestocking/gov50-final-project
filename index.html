@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/header-attrs-2.16/header-attrs.js","index_files/header-attrs-2.17/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","welleI.dta"]}
+  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-1-1.png","index_files/header-attrs-2.16/header-attrs.js","index_files/header-attrs-2.17/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","welleI.dta"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1518,7 +1518,35 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <div class="d-article">
 <h2 id="milestone-2">Milestone 2</h2>
-<p>Have COVID-19-related burdens led to the standstill in political participation? I hypothesize that the deficient resources and service accessibility during the pandemic have limited men’s and women’s activities and increased their care obligations at home, thus reducing their capabilities of engaging in political activities. The political participation are categorized as four modes in accordance with the research of van Deth (2014), including institutional participation, protest participation, online participation, and civic engagement. My sample is based on a retrospective survey conducted in autumn 2020 in Germany, covering 3,342 respondents of different ages, genders, education backgrounds, and regions. My unit of analysis is Germany’s first nationwide lockdown in Spring 2020. The explanatory variable of interest is the care obligations during the pandemic, measured by categorical scales from 1 (never) to 5 (very often). My outcome variable is the four modes of participation, measured by the same scales. If I observe an ATE is positive, this would provide evidence against my hypothesis. If the ATE is negative, this would support my hypothesis.</p>
+<p>Have COVID-19-related burdens led to the standstill in political participation? According to van Deth (2014), the political participation are categorized as four modes, including institutional participation, protest participation, online participation, and civic engagement. In this case, I will pay particular attention to how care work at home influence their civic engagement. I hypothesize that the deficient resources and service accessibility during the pandemic have limited men’s and women’s activities and increased their care obligations, thus reducing their capabilities of engaging in political activities. My sample is based on a retrospective survey conducted in autumn 2020 in Germany, covering 3,342 respondents of different ages, genders, education backgrounds, and regions. My unit of analysis is Germany’s first nationwide lockdown in Spring 2020. The explanatory variable of interest is the care obligations during the pandemic, measured by categorical scales from 1 (never) to 5 (very often). My outcome variable is the four modes of participation, measured by the same scales. If I observe an ATE is positive, this would provide evidence against my hypothesis. If the ATE is negative, this would support my hypothesis.</p>
+<h2 id="milestone-3">Milestone 3</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://haven.tidyverse.org'>haven</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/tidymodels/infer'>infer</a></span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>wellei</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/read_dta.html'>read_dta</a></span><span class='op'>(</span><span class='st'>"wellei.dta"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>civic</span> <span class='op'>&lt;-</span> <span class='va'>wellei</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span></span>
+<span>    help_overall <span class='op'>=</span> <span class='va'>help_shopping_bi</span> <span class='op'>+</span> <span class='va'>help_childcare_bi</span> <span class='op'>+</span> <span class='va'>help_general_bi</span> <span class='op'>+</span> <span class='va'>help_volunteer_bi</span> <span class='op'>+</span> <span class='va'>help_emo_bi</span> <span class='op'>+</span> <span class='va'>help_symb_bi</span> <span class='op'>+</span> <span class='va'>help_fin_bi</span> <span class='op'>+</span> <span class='va'>help_donation_bi</span>,</span>
+<span>    gender <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>gndr</span> <span class='op'>==</span> <span class='fl'>1</span>, <span class='st'>"Male"</span>, <span class='st'>"Female"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>civic_dis</span> <span class='op'>&lt;-</span> <span class='va'>civic</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>help_overall</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span><span class='op'>(</span><span class='op'>~</span> <span class='va'>gender</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span></span>
+<span>    x <span class='op'>=</span> <span class='st'>"Overall Scale in Civic Engagement During the Pandemic"</span>,</span>
+<span>    y <span class='op'>=</span> <span class='st'>"Count"</span></span>
+<span>  <span class='op'>)</span></span>
+<span>  </span>
+<span><span class='va'>civic_dis</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-1-1.png" width="624" /></p>
+</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
