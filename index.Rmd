@@ -12,21 +12,27 @@ options(width = 100)
 library(infer)
 library(tidyverse)
 library(ggplot2)
-library(ggcorrplot)
-library(mice)
 ```
 
 ## Introduction
+* where you introduce the research question
+* hypothesis
+* briefly describe why it is interesting
+
+
 
 ## Data
 
 ```{r}
 df <- read_csv("day.csv")
-df
+df <- df[,8:16]
 ```
 
+* how is data collected
+* type of research design
+
 | Variable     | Description                                                                                                                        |
-|-------------------|-----------------------------------------------------|
+|---------------------|---------------------------------------------------|
 | `workingday` | Indicator variable for whether day is a working day. If the day is neither weekend nor holiday is 1, otherwise is 0.               |
 | `weathersit` | Indicator variable for weather of the day. 1 for sunny or cloudy, 2 for mist, 3 for light precipitation, 4 for heavy precipitation |
 | `temp`       | Normalized temperature in Celsius.                                                                                                 |
@@ -37,37 +43,7 @@ df
 | `registered` | Count of registered users.                                                                                                         |
 | `cnt`        | Count of total rental bikes including both casual and registered.                                                                  |
 
-```{r}
-df |>
-  ggplot(aes(x = temp, y = cnt)) +
-  geom_point() +
-  geom_smooth(method = "loess", se = FALSE) +
-  labs(x = "Normalized temperature (Celsius)", 
-       y = "Count of total rental bikes")
-```
-
-```{r}
-dist_temp <- df |>
-  ggplot(aes(x = temp)) +
-  geom_histogram() +
-  labs(title = "Distribution of Temperature",
-       x = "Normalized temperature (Celsius)")
-dist_temp
-
-dist_hum <- df |>
-  ggplot(aes(x = hum)) +
-  geom_histogram() +
-  labs(title = "Distribution of Humidity",
-       x = "Normalized humidity")
-dist_hum
-
-dist_casual <- df |>
-  ggplot(aes(x = casual)) +
-  geom_histogram() +
-  labs(title = "Distribution of Count of Casual Users",
-       x = "Count of casual users")
-dist_casual
-```
+* a plot that summarizes the dependent variable
 
 ```{r}
 dist_cnt <- df |>
@@ -78,7 +54,10 @@ dist_cnt <- df |>
 dist_cnt
 ```
 
+
 ## Result
+
+* presentation of your regression results (either a plot or a table)
 
 ```{r}
 reg_cnt <- lm(cnt ~ workingday + weathersit + temp + atemp + hum + windspeed + casual + registered, data = df)
@@ -89,4 +68,33 @@ modelsummary::modelsummary(reg_cnt,
                            gof_map = c("nobs", "r.squared", "adj.r.squared"))
 ```
 
+* separate plots of the main relationship of interest
+interpret (in plain English) the main coefficient of interest in your regression, comment on the statistical significance of the estimated coefficient, and say whether or not you believe the coefficient to represent a causal effect
+
+```{r}
+df |>
+  ggplot(aes(x = casual, y = cnt)) +
+  geom_point() +
+  labs(x = "Count of casual users",
+       y = "Count of total rental bikes")
+
+df |>
+  ggplot(aes(x = temp, y = cnt)) +
+  geom_point() +
+  labs(x = "Normalized temperature (Celsius)",
+       y = "Count of total rental bikes")
+
+df |>
+  ggplot(aes(x = atemp, y = cnt)) +
+  geom_point() +
+  labs(x = "Normalized feeling temperature (Celsius)",
+       y = "Count of total rental bikes")
+```
+* a summary and discussion of results in substantive context
+
+
+
 ## Conclusion
+* a recap of results
+* discussion of limitations of the study
+* how to improve the study in the future (a paragraph)
