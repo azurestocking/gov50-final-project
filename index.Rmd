@@ -82,7 +82,6 @@ dist_cnt
 
 ```{r}
 reg_cnt <- lm(cnt ~ workingday + weathersit + temp + atemp + hum + windspeed + casual + registered, data = df)
-reg_cnt
 
 modelsummary::modelsummary(reg_cnt,
                            statistic = c("s.e. = {std.error}",
