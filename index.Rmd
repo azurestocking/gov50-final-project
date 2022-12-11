@@ -1,7 +1,7 @@
 ---
-title: "Gov 50 Final Project"
-author: "Jinming Li"
-description: "My final project"
+title: "TITLE"
+author: "AUTHOR"
+description: "DESCRIPTION"
 output:
   distill::distill_article:
     self_contained: false
@@ -26,7 +26,7 @@ df
 ```
 
 | Variable     | Description                                                                                                                        |
-|--------------|------------------------------------------------------------------------------------------------------------------------------------|
+|-------------------|-----------------------------------------------------|
 | `workingday` | Indicator variable for whether day is a working day. If the day is neither weekend nor holiday is 1, otherwise is 0.               |
 | `weathersit` | Indicator variable for weather of the day. 1 for sunny or cloudy, 2 for mist, 3 for light precipitation, 4 for heavy precipitation |
 | `temp`       | Normalized temperature in Celsius.                                                                                                 |
