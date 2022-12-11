@@ -7,39 +7,87 @@ output:
     self_contained: false
 ---
 
-
-
 ```{r}
 options(width = 100)
 library(infer)
 library(tidyverse)
 library(ggplot2)
+library(ggcorrplot)
+library(mice)
 ```
-
-
 
 ## Introduction
 
-
 ## Data
 
+```{r}
+df <- read_csv("day.csv")
+df
+```
 
-| Variable | Description |
-| --- | ----------- |
-| `workingday` | if day is neither weekend nor holiday is 1, otherwise is 0. |
-| `weathersit` | Text |
-| `temp` | Normalized temperature in Celsius. |
-| `atemp` | Normalized feeling temperature in Celsius. |
-| `hum` | Normalized humidity. |
-| `windspeed` | Normalized wind speed. |
-| `casual` | Count of casual users. |
-| `registered` | Count of registered users. |
-| `cnt` | Count of total rental bikes including both casual and registered. |
+| Variable     | Description                                                                                                                        |
+|------------------|------------------------------------------------------|
+| `workingday` | Indicator variable for whether day is a working day. If the day is neither weekend nor holiday is 1, otherwise is 0.               |
+| `weathersit` | Indicator variable for weather of the day. 1 for sunny or cloudy, 2 for mist, 3 for light precipitation, 4 for heavy precipitation |
+| `temp`       | Normalized temperature in Celsius.                                                                                                 |
+| `atemp`      | Normalized feeling temperature in Celsius.                                                                                         |
+| `hum`        | Normalized humidity.                                                                                                               |
+| `windspeed`  | Normalized wind speed.                                                                                                             |
+| `casual`     | Count of casual users.                                                                                                             |
+| `registered` | Count of registered users.                                                                                                         |
+| `cnt`        | Count of total rental bikes including both casual and registered.                                                                  |
 
+```{r}
+df |>
+  ggplot(aes(x = temp, y = cnt)) +
+  geom_point() +
+  geom_smooth(method = "loess", se = FALSE) +
+  labs(x = "Normalized temperature (Celsius)", 
+       y = "Count of total rental bikes")
+```
 
+```{r}
+dist_temp <- df |>
+  ggplot(aes(x = temp)) +
+  geom_histogram() +
+  labs(title = "Distribution of Temperature",
+       x = "Normalized temperature (Celsius)")
+dist_temp
+
+dist_hum <- df |>
+  ggplot(aes(x = hum)) +
+  geom_histogram() +
+  labs(title = "Distribution of Humidity",
+       x = "Normalized humidity")
+dist_hum
+
+dist_casual <- df |>
+  ggplot(aes(x = casual)) +
+  geom_histogram() +
+  labs(title = "Distribution of Count of Casual Users",
+       x = "Count of casual users")
+dist_casual
+```
+
+```{r}
+dist_cnt <- df |>
+  ggplot(aes(x = cnt)) +
+  geom_histogram() +
+  labs(title = "Distribution of Count of Total Rental Bikes",
+       x = "Count of total rental bikes")
+dist_cnt
+```
 
 ## Result
 
+```{r}
+reg_cnt <- lm(cnt ~ workingday + weathersit + temp + atemp + hum + windspeed + casual + registered, data = df)
+reg_cnt
 
+modelsummary::modelsummary(reg_cnt,
+                           statistic = c("s.e. = {std.error}",
+                                         "p = {p.value}"),
+                           gof_map = c("nobs", "r.squared", "adj.r.squared"))
+```
 
 ## Conclusion
