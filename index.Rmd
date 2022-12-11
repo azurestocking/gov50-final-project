@@ -14,6 +14,8 @@ library(tidyverse)
 library(ggplot2)
 ```
 
+
+
 ## Introduction
 * where you introduce the research question
 * hypothesis
@@ -22,12 +24,6 @@ library(ggplot2)
 
 
 ## Data
-
-```{r}
-df <- read_csv("day.csv")
-df <- df[,8:16]
-```
-
 * how is data collected
 * type of research design
 
@@ -46,6 +42,9 @@ df <- df[,8:16]
 * a plot that summarizes the dependent variable
 
 ```{r}
+df <- read_csv("day.csv")
+df <- df[,8:16]
+
 dist_cnt <- df |>
   ggplot(aes(x = cnt)) +
   geom_histogram() +
@@ -55,15 +54,14 @@ dist_cnt
 ```
 
 
-## Result
 
+## Result
 * presentation of your regression results (either a plot or a table)
 
 ```{r}
 reg_cnt <- lm(cnt ~ workingday + weathersit + temp + atemp + hum + windspeed + casual + registered, data = df)
 summary(reg_cnt)
 ```
-
 
 * separate plots of the main relationship of interest
 interpret (in plain English) the main coefficient of interest in your regression, comment on the statistical significance of the estimated coefficient, and say whether or not you believe the coefficient to represent a causal effect
