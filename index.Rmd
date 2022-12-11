@@ -61,17 +61,20 @@ dist_cnt
 
 ```{r}
 reg_cnt <- lm(cnt ~ workingday + weathersit + temp + atemp + hum + windspeed + casual + registered, data = df)
-
-modelsummary::modelsummary(reg_cnt,
-                           statistic = c("s.e. = {std.error}",
-                                         "p = {p.value}"),
-                           gof_map = c("nobs", "r.squared", "adj.r.squared"))
+summary(reg_cnt)
 ```
+
 
 * separate plots of the main relationship of interest
 interpret (in plain English) the main coefficient of interest in your regression, comment on the statistical significance of the estimated coefficient, and say whether or not you believe the coefficient to represent a causal effect
 
 ```{r}
+df |>
+  ggplot(aes(x = registered, y = cnt)) +
+  geom_point() +
+  labs(x = "Count of registered users",
+       y = "Count of total rental bikes")
+
 df |>
   ggplot(aes(x = casual, y = cnt)) +
   geom_point() +
