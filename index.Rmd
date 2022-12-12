@@ -24,6 +24,7 @@ library(ggplot2)
 
 
 ## Data
+daily count of rental bikes between years 2011 and 2012 in Capital bikeshare system with the corresponding weather
 * how is data collected
 * type of research design
 * a plot that summarizes the dependent variable and interpretaton (figure 1)
@@ -43,6 +44,7 @@ library(ggplot2)
 ```{r}
 df <- read.csv("day.csv")
 df <- df[,8:16]
+df
 
 dist_cnt <- df |>
   ggplot(aes(x = cnt)) +
