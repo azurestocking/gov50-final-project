@@ -1532,10 +1532,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li>briefly describe why it is interesting</li>
 </ul>
 <h2 id="data">Data</h2>
-<h3 id="describle-data">Describle data</h3>
 <ul>
 <li>how is data collected</li>
 <li>type of research design</li>
+<li>a plot that summarizes the dependent variable and interpretaton (figure 1)</li>
 </ul>
 <table>
 <colgroup>
@@ -1587,7 +1587,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </tr>
 </tbody>
 </table>
-<h3 id="a-plot-that-summarizes-the-dependent-variable">a plot that summarizes the dependent variable</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"day.csv"</span><span class='op'>)</span></span>
@@ -1596,15 +1595,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span><span class='va'>dist_cnt</span> <span class='op'>&lt;-</span> <span class='va'>df</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>cnt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Distribution of Count of Total Rental Bikes"</span>,</span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Figure 1: Distribution of Count of Total Rental Bikes"</span>,</span>
 <span>       x <span class='op'>=</span> <span class='st'>"Count of total rental bikes"</span><span class='op'>)</span></span>
 <span><span class='va'>dist_cnt</span></span></code></pre>
 </div>
 <p><img src="index_files/figure-html5/unnamed-chunk-2-1.png" width="624" /></p>
 </div>
 <h2 id="result">Result</h2>
-<h3 id="presentation-of-regression">Presentation of Regression</h3>
-<p>a summary and discussion of results in substantive context</p>
+<ul>
+<li>figure 2: one bivariate regression (showing the relationship between just the predictor you are most interested in and your outcome)</li>
+<li>one multivariate regression (where you control for a couple of confounders)</li>
+<li>separate plots of the main relationship of interest (figure 3, 4, 5, 6)</li>
+<li>a summary and discussion of results in substantive context</li>
+<li>interpret (in plain English) the main coefficient of interest in your regression, comment on the statistical significance of the estimated coefficient, and say whether or not you believe the coefficient to represent a causal effect</li>
+</ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span><span class='op'>)</span></span>
@@ -1634,7 +1638,7 @@ F-statistic: 70.73 on 1 and 729 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>weathersit</span>, y <span class='op'>=</span> <span class='va'>cnt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Regression of CNT on Weather Inclemency"</span>,</span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Figure 2: Regression of CNT on Weather Inclemency"</span>,</span>
 <span>       x <span class='op'>=</span> <span class='st'>"Weather Inclemency"</span>,</span>
 <span>       y <span class='op'>=</span> <span class='st'>"Count of total rental bikes"</span><span class='op'>)</span></span></code></pre>
 </div>
@@ -1670,15 +1674,13 @@ Residual standard error: 0.7273 on 724 degrees of freedom
 Multiple R-squared:  0.4754,    Adjusted R-squared:  0.4711 
 F-statistic: 109.4 on 6 and 724 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<h3 id="separate-plots-of-the-main-relationship-of-interest">separate plots of the main relationship of interest</h3>
-<p>interpret (in plain English) the main coefficient of interest in your regression, comment on the statistical significance of the estimated coefficient, and say whether or not you believe the coefficient to represent a causal effect</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>df</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>weathersit</span>, y <span class='op'>=</span> <span class='va'>cnt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Regression of CNT on Weather Inclemency"</span>,</span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Figure 3: Regression of CNT on Weather Inclemency"</span>,</span>
 <span>       x <span class='op'>=</span> <span class='st'>"Weather Inclemency"</span>,</span>
 <span>       y <span class='op'>=</span> <span class='st'>"Count of total rental bikes"</span><span class='op'>)</span></span></code></pre>
 </div>
@@ -1688,7 +1690,7 @@ F-statistic: 109.4 on 6 and 724 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>atemp</span>, y <span class='op'>=</span> <span class='va'>cnt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Regression of CNT on Feeling Temperature"</span>,</span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Figure 4: Regression of CNT on Feeling Temperature"</span>,</span>
 <span>       x <span class='op'>=</span> <span class='st'>"Normalized feeling temperature (Celsius)"</span>,</span>
 <span>       y <span class='op'>=</span> <span class='st'>"Count of total rental bikes"</span><span class='op'>)</span></span></code></pre>
 </div>
@@ -1698,7 +1700,7 @@ F-statistic: 109.4 on 6 and 724 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>hum</span>, y <span class='op'>=</span> <span class='va'>cnt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Regression of CNT on Humidity"</span>,</span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Figure 5: Regression of CNT on Humidity"</span>,</span>
 <span>       x <span class='op'>=</span> <span class='st'>"Normalized Humidity"</span>,</span>
 <span>       y <span class='op'>=</span> <span class='st'>"Count of total rental bikes"</span><span class='op'>)</span></span></code></pre>
 </div>
@@ -1708,7 +1710,7 @@ F-statistic: 109.4 on 6 and 724 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>windspeed</span>, y <span class='op'>=</span> <span class='va'>cnt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Regression of CNT on Wind Speed"</span>,</span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Figure 6: Regression of CNT on Wind Speed"</span>,</span>
 <span>       x <span class='op'>=</span> <span class='st'>"Normalized Wind Speed"</span>,</span>
 <span>       y <span class='op'>=</span> <span class='st'>"Count of total rental bikes"</span><span class='op'>)</span></span></code></pre>
 </div>

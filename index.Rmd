@@ -24,9 +24,9 @@ library(ggplot2)
 
 
 ## Data
-### Describle data
 * how is data collected
 * type of research design
+* a plot that summarizes the dependent variable and interpretaton (figure 1)
 
 | Variable     | Description                                                                                                                        |
 |---------------------|---------------------------------------------------|
@@ -39,7 +39,6 @@ library(ggplot2)
 | `casual`     | Count of casual users.                                                                                                             |
 | `registered` | Count of registered users.                                                                                                         |
 | `cnt`        | Count of total rental bikes including both casual and registered.                                                                  |
-### a plot that summarizes the dependent variable
 
 ```{r}
 df <- read.csv("day.csv")
@@ -48,7 +47,7 @@ df <- df[,8:16]
 dist_cnt <- df |>
   ggplot(aes(x = cnt)) +
   geom_histogram() +
-  labs(title = "Distribution of Count of Total Rental Bikes",
+  labs(title = "Figure 1: Distribution of Count of Total Rental Bikes",
        x = "Count of total rental bikes")
 dist_cnt
 ```
@@ -56,8 +55,11 @@ dist_cnt
 
 
 ## Result
-### Presentation of Regression
-a summary and discussion of results in substantive context
+* figure 2: one bivariate regression (showing the relationship between just the predictor you are most interested in and your outcome)
+* one multivariate regression (where you control for a couple of confounders)
+* separate plots of the main relationship of interest (figure 3, 4, 5, 6)
+* a summary and discussion of results in substantive context
+* interpret (in plain English) the main coefficient of interest in your regression, comment on the statistical significance of the estimated coefficient, and say whether or not you believe the coefficient to represent a causal effect
 
 ```{r}
 df <- data.frame(scale(df))
@@ -68,26 +70,22 @@ df |>
   ggplot(aes(x = weathersit, y = cnt)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
-  labs(title = "Regression of CNT on Weather Inclemency",
+  labs(title = "Figure 2: Regression of CNT on Weather Inclemency",
        x = "Weather Inclemency",
        y = "Count of total rental bikes")
 ```
-
 
 ```{r}
 reg_all <- lm(cnt ~ workingday + weathersit + temp + atemp + hum + windspeed, data = df)
 summary(reg_all)
 ```
 
-### separate plots of the main relationship of interest
-interpret (in plain English) the main coefficient of interest in your regression, comment on the statistical significance of the estimated coefficient, and say whether or not you believe the coefficient to represent a causal effect
-
 ```{r}
 df |>
   ggplot(aes(x = weathersit, y = cnt)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
-  labs(title = "Regression of CNT on Weather Inclemency",
+  labs(title = "Figure 3: Regression of CNT on Weather Inclemency",
        x = "Weather Inclemency",
        y = "Count of total rental bikes")
 
@@ -95,7 +93,7 @@ df |>
   ggplot(aes(x = atemp, y = cnt)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
-  labs(title = "Regression of CNT on Feeling Temperature",
+  labs(title = "Figure 4: Regression of CNT on Feeling Temperature",
        x = "Normalized feeling temperature (Celsius)",
        y = "Count of total rental bikes")
 
@@ -103,7 +101,7 @@ df |>
   ggplot(aes(x = hum, y = cnt)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
-  labs(title = "Regression of CNT on Humidity",
+  labs(title = "Figure 5: Regression of CNT on Humidity",
        x = "Normalized Humidity",
        y = "Count of total rental bikes")
 
@@ -111,7 +109,7 @@ df |>
   ggplot(aes(x = windspeed, y = cnt)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
-  labs(title = "Regression of CNT on Wind Speed",
+  labs(title = "Figure 6: Regression of CNT on Wind Speed",
        x = "Normalized Wind Speed",
        y = "Count of total rental bikes")
 ```
