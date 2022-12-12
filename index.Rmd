@@ -37,14 +37,11 @@ daily count of rental bikes between years 2011 and 2012 in Capital bikeshare sys
 | `atemp`      | Normalized feeling temperature in Celsius.                                                                                         |
 | `hum`        | Normalized humidity.                                                                                                               |
 | `windspeed`  | Normalized wind speed.                                                                                                             |
-| `casual`     | Count of casual users.                                                                                                             |
-| `registered` | Count of registered users.                                                                                                         |
 | `cnt`        | Count of total rental bikes including both casual and registered.                                                                  |
 
 ```{r}
 df <- read.csv("day.csv")
-df <- df[,8:16]
-df
+df <- df[,8:13]
 
 dist_cnt <- df |>
   ggplot(aes(x = cnt)) +
