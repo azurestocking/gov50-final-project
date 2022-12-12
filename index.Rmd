@@ -7,8 +7,6 @@ output:
     self_contained: false
 ---
 
-
-
 ```{r}
 options(width = 100)
 library(infer)
@@ -26,13 +24,14 @@ library(ggplot2)
 
 
 ## Data
+### Describle data
 * how is data collected
 * type of research design
 
 | Variable     | Description                                                                                                                        |
 |---------------------|---------------------------------------------------|
 | `workingday` | Indicator variable for whether day is a working day. If the day is neither weekend nor holiday is 1, otherwise is 0.               |
-| `weathersit` | Indicator variable for weather of the day. 1 for sunny or cloudy, 2 for mist, 3 for light precipitation, 4 for heavy precipitation |
+| `weathersit` | Indicator variable for weather inclemency. 1 for sunny or cloudy, 2 for mist, 3 for light precipitation, 4 for heavy precipitation |
 | `temp`       | Normalized temperature in Celsius.                                                                                                 |
 | `atemp`      | Normalized feeling temperature in Celsius.                                                                                         |
 | `hum`        | Normalized humidity.                                                                                                               |
@@ -40,11 +39,10 @@ library(ggplot2)
 | `casual`     | Count of casual users.                                                                                                             |
 | `registered` | Count of registered users.                                                                                                         |
 | `cnt`        | Count of total rental bikes including both casual and registered.                                                                  |
-
-* a plot that summarizes the dependent variable
+### a plot that summarizes the dependent variable
 
 ```{r}
-df <- read_csv("day.csv")
+df <- read.csv("day.csv")
 df <- df[,8:16]
 
 dist_cnt <- df |>
@@ -58,42 +56,65 @@ dist_cnt
 
 
 ## Result
-* presentation of your regression results (either a plot or a table)
+### Presentation of Regression
+a summary and discussion of results in substantive context
 
 ```{r}
-reg_cnt <- lm(cnt ~ workingday + weathersit + temp + atemp + hum + windspeed + casual + registered, data = df)
-summary(reg_cnt)
+df <- data.frame(scale(df))
+reg_main <- lm (cnt ~ weathersit, data = df)
+summary(reg_main)
+
+df |>
+  ggplot(aes(x = weathersit, y = cnt)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "Regression of CNT on Weather Inclemency",
+       x = "Weather Inclemency",
+       y = "Count of total rental bikes")
 ```
 
-* separate plots of the main relationship of interest
+
+```{r}
+reg_all <- lm(cnt ~ workingday + weathersit + temp + atemp + hum + windspeed, data = df)
+summary(reg_all)
+```
+
+### separate plots of the main relationship of interest
 interpret (in plain English) the main coefficient of interest in your regression, comment on the statistical significance of the estimated coefficient, and say whether or not you believe the coefficient to represent a causal effect
 
 ```{r}
 df |>
-  ggplot(aes(x = registered, y = cnt)) +
+  ggplot(aes(x = weathersit, y = cnt)) +
   geom_point() +
-  labs(x = "Count of registered users",
-       y = "Count of total rental bikes")
-
-df |>
-  ggplot(aes(x = casual, y = cnt)) +
-  geom_point() +
-  labs(x = "Count of casual users",
-       y = "Count of total rental bikes")
-
-df |>
-  ggplot(aes(x = temp, y = cnt)) +
-  geom_point() +
-  labs(x = "Normalized temperature (Celsius)",
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "Regression of CNT on Weather Inclemency",
+       x = "Weather Inclemency",
        y = "Count of total rental bikes")
 
 df |>
   ggplot(aes(x = atemp, y = cnt)) +
   geom_point() +
-  labs(x = "Normalized feeling temperature (Celsius)",
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "Regression of CNT on Feeling Temperature",
+       x = "Normalized feeling temperature (Celsius)",
+       y = "Count of total rental bikes")
+
+df |>
+  ggplot(aes(x = hum, y = cnt)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "Regression of CNT on Humidity",
+       x = "Normalized Humidity",
+       y = "Count of total rental bikes")
+
+df |>
+  ggplot(aes(x = windspeed, y = cnt)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "Regression of CNT on Wind Speed",
+       x = "Normalized Wind Speed",
        y = "Count of total rental bikes")
 ```
-* a summary and discussion of results in substantive context
 
 
 

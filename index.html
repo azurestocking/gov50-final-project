@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["day.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-1-1.png","index_files/figure-html5/unnamed-chunk-3-1.png","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/figure-html5/unnamed-chunk-4-2.png","index_files/figure-html5/unnamed-chunk-4-3.png","index_files/figure-html5/unnamed-chunk-5-1.png","index_files/figure-html5/unnamed-chunk-5-2.png","index_files/figure-html5/unnamed-chunk-5-3.png","index_files/figure-html5/unnamed-chunk-5-4.png","index_files/header-attrs-2.16/header-attrs.js","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.18/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/kePrint-0.0.1/kePrint.js","index_files/lightable-0.0.1/lightable.css","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["day.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-1-1.png","index_files/figure-html5/unnamed-chunk-2-1.png","index_files/figure-html5/unnamed-chunk-3-1.png","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/figure-html5/unnamed-chunk-4-2.png","index_files/figure-html5/unnamed-chunk-4-3.png","index_files/figure-html5/unnamed-chunk-5-1.png","index_files/figure-html5/unnamed-chunk-5-2.png","index_files/figure-html5/unnamed-chunk-5-3.png","index_files/figure-html5/unnamed-chunk-5-4.png","index_files/header-attrs-2.16/header-attrs.js","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.18/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/kePrint-0.0.1/kePrint.js","index_files/lightable-0.0.1/lightable.css","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1532,12 +1532,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li>briefly describe why it is interesting</li>
 </ul>
 <h2 id="data">Data</h2>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"day.csv"</span><span class='op'>)</span></span>
-<span><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='va'>df</span><span class='op'>[</span>,<span class='fl'>8</span><span class='op'>:</span><span class='fl'>16</span><span class='op'>]</span></span></code></pre>
-</div>
-</div>
+<h3 id="describle-data">Describle data</h3>
 <ul>
 <li>how is data collected</li>
 <li>type of research design</li>
@@ -1560,7 +1555,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </tr>
 <tr class="even">
 <td><code>weathersit</code></td>
-<td>Indicator variable for weather of the day. 1 for sunny or cloudy, 2 for mist, 3 for light precipitation, 4 for heavy precipitation</td>
+<td>Indicator variable for weather inclemency. 1 for sunny or cloudy, 2 for mist, 3 for light precipitation, 4 for heavy precipitation</td>
 </tr>
 <tr class="odd">
 <td><code>temp</code></td>
@@ -1592,104 +1587,140 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </tr>
 </tbody>
 </table>
-<ul>
-<li>a plot that summarizes the dependent variable</li>
-</ul>
+<h3 id="a-plot-that-summarizes-the-dependent-variable">a plot that summarizes the dependent variable</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>dist_cnt</span> <span class='op'>&lt;-</span> <span class='va'>df</span> <span class='op'>|&gt;</span></span>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"day.csv"</span><span class='op'>)</span></span>
+<span><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='va'>df</span><span class='op'>[</span>,<span class='fl'>8</span><span class='op'>:</span><span class='fl'>16</span><span class='op'>]</span></span>
+<span></span>
+<span><span class='va'>dist_cnt</span> <span class='op'>&lt;-</span> <span class='va'>df</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>cnt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Distribution of Count of Total Rental Bikes"</span>,</span>
 <span>       x <span class='op'>=</span> <span class='st'>"Count of total rental bikes"</span><span class='op'>)</span></span>
 <span><span class='va'>dist_cnt</span></span></code></pre>
 </div>
-<p><img src="index_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
+<p><img src="index_files/figure-html5/unnamed-chunk-2-1.png" width="624" /></p>
 </div>
 <h2 id="result">Result</h2>
-<ul>
-<li>presentation of your regression results (either a plot or a table)</li>
-</ul>
+<h3 id="presentation-of-regression">Presentation of Regression</h3>
+<p>a summary and discussion of results in substantive context</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>reg_cnt</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>cnt</span> <span class='op'>~</span> <span class='va'>workingday</span> <span class='op'>+</span> <span class='va'>weathersit</span> <span class='op'>+</span> <span class='va'>temp</span> <span class='op'>+</span> <span class='va'>atemp</span> <span class='op'>+</span> <span class='va'>hum</span> <span class='op'>+</span> <span class='va'>windspeed</span> <span class='op'>+</span> <span class='va'>casual</span> <span class='op'>+</span> <span class='va'>registered</span>, data <span class='op'>=</span> <span class='va'>df</span><span class='op'>)</span></span>
-<span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>reg_cnt</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>reg_main</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span> <span class='op'>(</span><span class='va'>cnt</span> <span class='op'>~</span> <span class='va'>weathersit</span>, data <span class='op'>=</span> <span class='va'>df</span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>reg_main</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>
+Call:
+lm(formula = cnt ~ weathersit, data = df)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-2.31846 -0.66376 -0.02326  0.73368  2.32135 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -1.095e-17  3.534e-02    0.00        1    
+weathersit  -2.974e-01  3.536e-02   -8.41   &lt;2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.9554 on 729 degrees of freedom
+Multiple R-squared:  0.08844,   Adjusted R-squared:  0.08719 
+F-statistic: 70.73 on 1 and 729 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>df</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>weathersit</span>, y <span class='op'>=</span> <span class='va'>cnt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Regression of CNT on Weather Inclemency"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Weather Inclemency"</span>,</span>
+<span>       y <span class='op'>=</span> <span class='st'>"Count of total rental bikes"</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>reg_all</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>cnt</span> <span class='op'>~</span> <span class='va'>workingday</span> <span class='op'>+</span> <span class='va'>weathersit</span> <span class='op'>+</span> <span class='va'>temp</span> <span class='op'>+</span> <span class='va'>atemp</span> <span class='op'>+</span> <span class='va'>hum</span> <span class='op'>+</span> <span class='va'>windspeed</span>, data <span class='op'>=</span> <span class='va'>df</span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>reg_all</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>
 Call:
 lm(formula = cnt ~ workingday + weathersit + temp + atemp + hum + 
-    windspeed + casual + registered, data = df)
+    windspeed, data = df)
 
 Residuals:
-       Min         1Q     Median         3Q        Max 
--2.205e-12 -4.060e-13 -1.720e-13  1.250e-13  6.665e-11 
+     Min       1Q   Median       3Q      Max 
+-2.15439 -0.55200 -0.05496  0.53875  1.98225 
 
 Coefficients:
-              Estimate Std. Error    t value Pr(&gt;|t|)    
-(Intercept)  1.057e-11  8.056e-13  1.312e+01  &lt; 2e-16 ***
-workingday   5.314e-13  3.737e-13  1.422e+00  0.15543    
-weathersit  -1.310e-12  2.647e-13 -4.951e+00 9.21e-07 ***
-temp        -1.374e-11  4.719e-12 -2.912e+00  0.00371 ** 
-atemp       -1.136e-12  5.334e-12 -2.130e-01  0.83139    
-hum          9.525e-13  1.045e-12  9.120e-01  0.36233    
-windspeed   -1.765e-12  1.549e-12 -1.139e+00  0.25499    
-casual       1.000e+00  2.910e-16  3.437e+15  &lt; 2e-16 ***
-registered   1.000e+00  1.037e-16  9.645e+15  &lt; 2e-16 ***
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  1.404e-16  2.690e-02   0.000 1.000000    
+workingday   3.827e-02  2.704e-02   1.415 0.157398    
+weathersit  -1.359e-01  3.542e-02  -3.838 0.000135 ***
+temp         2.281e-01  2.138e-01   1.067 0.286277    
+atemp        3.771e-01  2.152e-01   1.752 0.080132 .  
+hum         -1.424e-01  3.644e-02  -3.908 0.000102 ***
+windspeed   -1.586e-01  2.916e-02  -5.437 7.42e-08 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 2.931e-12 on 722 degrees of freedom
-Multiple R-squared:      1, Adjusted R-squared:      1 
-F-statistic: 3.985e+31 on 8 and 722 DF,  p-value: &lt; 2.2e-16</code></pre>
+Residual standard error: 0.7273 on 724 degrees of freedom
+Multiple R-squared:  0.4754,    Adjusted R-squared:  0.4711 
+F-statistic: 109.4 on 6 and 724 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<ul>
-<li>separate plots of the main relationship of interest
-interpret (in plain English) the main coefficient of interest in your regression, comment on the statistical significance of the estimated coefficient, and say whether or not you believe the coefficient to represent a causal effect</li>
-</ul>
+<h3 id="separate-plots-of-the-main-relationship-of-interest">separate plots of the main relationship of interest</h3>
+<p>interpret (in plain English) the main coefficient of interest in your regression, comment on the statistical significance of the estimated coefficient, and say whether or not you believe the coefficient to represent a causal effect</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>df</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>registered</span>, y <span class='op'>=</span> <span class='va'>cnt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>weathersit</span>, y <span class='op'>=</span> <span class='va'>cnt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Count of registered users"</span>,</span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Regression of CNT on Weather Inclemency"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Weather Inclemency"</span>,</span>
 <span>       y <span class='op'>=</span> <span class='st'>"Count of total rental bikes"</span><span class='op'>)</span></span></code></pre>
 </div>
 <img src="index_files/figure-html5/unnamed-chunk-5-1.png" width="624" />
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>df</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>casual</span>, y <span class='op'>=</span> <span class='va'>cnt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>atemp</span>, y <span class='op'>=</span> <span class='va'>cnt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Count of casual users"</span>,</span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Regression of CNT on Feeling Temperature"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Normalized feeling temperature (Celsius)"</span>,</span>
 <span>       y <span class='op'>=</span> <span class='st'>"Count of total rental bikes"</span><span class='op'>)</span></span></code></pre>
 </div>
 <img src="index_files/figure-html5/unnamed-chunk-5-2.png" width="624" />
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>df</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>temp</span>, y <span class='op'>=</span> <span class='va'>cnt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>hum</span>, y <span class='op'>=</span> <span class='va'>cnt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Normalized temperature (Celsius)"</span>,</span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Regression of CNT on Humidity"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Normalized Humidity"</span>,</span>
 <span>       y <span class='op'>=</span> <span class='st'>"Count of total rental bikes"</span><span class='op'>)</span></span></code></pre>
 </div>
 <img src="index_files/figure-html5/unnamed-chunk-5-3.png" width="624" />
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>df</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>atemp</span>, y <span class='op'>=</span> <span class='va'>cnt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>windspeed</span>, y <span class='op'>=</span> <span class='va'>cnt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Normalized feeling temperature (Celsius)"</span>,</span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Regression of CNT on Wind Speed"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Normalized Wind Speed"</span>,</span>
 <span>       y <span class='op'>=</span> <span class='st'>"Count of total rental bikes"</span><span class='op'>)</span></span></code></pre>
 </div>
 <p><img src="index_files/figure-html5/unnamed-chunk-5-4.png" width="624" /></p>
 </div>
-<ul>
-<li>a summary and discussion of results in substantive context</li>
-</ul>
 <h2 id="conclusion">Conclusion</h2>
 <ul>
 <li>a recap of results</li>
 <li>discussion of limitations of the study</li>
 <li>how to improve the study in the future (a paragraph)</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
