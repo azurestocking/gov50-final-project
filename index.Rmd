@@ -69,8 +69,6 @@ dist_cnt
 
 
 ## Result
-**whether or not you believe the coefficient to represent a causal effect**
-
 In the bivariate regression, the coefficient of `weathersit` is -1057.3, which means that a one-point increase in weather inclemency is associated with a decrease in count of total rental bikes of 1057.3 on average. According to the boxplot (Figure 2), as the lower quartile, median, and upper quartile get lower when the weather gets more inclement, the count of total rental bikes tends to decrease when the weather inclemency increases.
 
 ```{r}
@@ -98,6 +96,9 @@ In the multivariate regression, the p-values of `weathersit`, `atemp`, `hum`, an
 Precisely, the coefficient of `weathersit` is -483.3, meaning that holding other variables at a fixed value, a one-point increase in weather inclemency is associated with a decrease in count of total rental bikes of 483.3 on average. The coefficient of `atemp` is 4483.3, meaning that holding other variables at a fixed value, a one-point increase in normalized feeling temperature is associated with an increase in count of total rental bikes of 4483.3 on average. The coefficient of `hum` is -1936.8, meaning that holding other variables at a fixed value, a one-point increase in normalized humidity is associated with a decrease in count of total rental bikes of 1936.8 on average. The coefficient of `windspeed` is -3963.3, meaning that holding other variables at a fixed value, a one-point increase in normalized wind speed is associated with a decrease in count of total rental bikes of 3963.3 on average.
 
 Also, there is an increase in the coefficient of `weathersit` in the two models...
+
+**whether or not you believe the coefficient to represent a causal effect**
+**explain confounders of weather**
 
 ```{r}
 reg_all <- lm(cnt ~ workingday + weathersit + temp + atemp + hum + windspeed, data = df)
