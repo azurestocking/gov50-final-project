@@ -55,8 +55,8 @@ dist_cnt
 
 
 ## Result
-* figure 2: one bivariate regression (showing the relationship between just the predictor you are most interested in and your outcome)
-* one multivariate regression (where you control for a couple of confounders)
+* figure 2: one bivariate regression
+* one multivariate regression (control confounders)
 * separate plots of the main relationship of interest (figure 3, 4, 5)
 * a summary and discussion of results in substantive context
 * interpret (in plain English) the main coefficient of interest in your regression, comment on the statistical significance of the estimated coefficient, and say whether or not you believe the coefficient to represent a causal effect
