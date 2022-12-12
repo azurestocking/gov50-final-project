@@ -1606,14 +1606,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <ul>
 <li>figure 2: one bivariate regression (showing the relationship between just the predictor you are most interested in and your outcome)</li>
 <li>one multivariate regression (where you control for a couple of confounders)</li>
-<li>separate plots of the main relationship of interest (figure 3, 4, 5, 6)</li>
+<li>separate plots of the main relationship of interest (figure 3, 4, 5)</li>
 <li>a summary and discussion of results in substantive context</li>
 <li>interpret (in plain English) the main coefficient of interest in your regression, comment on the statistical significance of the estimated coefficient, and say whether or not you believe the coefficient to represent a causal effect</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span><span class='op'>)</span></span>
-<span><span class='va'>reg_main</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span> <span class='op'>(</span><span class='va'>cnt</span> <span class='op'>~</span> <span class='va'>weathersit</span>, data <span class='op'>=</span> <span class='va'>df</span><span class='op'>)</span></span>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>reg_main</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span> <span class='op'>(</span><span class='va'>cnt</span> <span class='op'>~</span> <span class='va'>weathersit</span>, data <span class='op'>=</span> <span class='va'>df</span><span class='op'>)</span></span>
 <span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>reg_main</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>
@@ -1621,17 +1620,17 @@ Call:
 lm(formula = cnt ~ weathersit, data = df)
 
 Residuals:
-     Min       1Q   Median       3Q      Max 
--2.31846 -0.66376 -0.02326  0.73368  2.32135 
+    Min      1Q  Median      3Q     Max 
+-4491.3 -1285.8   -45.1  1421.3  4496.9 
 
 Coefficients:
-              Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) -1.095e-17  3.534e-02    0.00        1    
-weathersit  -2.974e-01  3.536e-02   -8.41   &lt;2e-16 ***
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   5979.6      188.3   31.75   &lt;2e-16 ***
+weathersit   -1057.3      125.7   -8.41   &lt;2e-16 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 0.9554 on 729 degrees of freedom
+Residual standard error: 1851 on 729 degrees of freedom
 Multiple R-squared:  0.08844,   Adjusted R-squared:  0.08719 
 F-statistic: 70.73 on 1 and 729 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="sourceCode">
@@ -1656,66 +1655,56 @@ lm(formula = cnt ~ workingday + weathersit + temp + atemp + hum +
     windspeed, data = df)
 
 Residuals:
-     Min       1Q   Median       3Q      Max 
--2.15439 -0.55200 -0.05496  0.53875  1.98225 
+    Min      1Q  Median      3Q     Max 
+-4173.5 -1069.3  -106.5  1043.7  3840.0 
 
 Coefficients:
-              Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  1.404e-16  2.690e-02   0.000 1.000000    
-workingday   3.827e-02  2.704e-02   1.415 0.157398    
-weathersit  -1.359e-01  3.542e-02  -3.838 0.000135 ***
-temp         2.281e-01  2.138e-01   1.067 0.286277    
-atemp        3.771e-01  2.152e-01   1.752 0.080132 .  
-hum         -1.424e-01  3.644e-02  -3.908 0.000102 ***
-windspeed   -1.586e-01  2.916e-02  -5.437 7.42e-08 ***
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   3718.2      358.8  10.363  &lt; 2e-16 ***
+workingday     159.3      112.6   1.415 0.157398    
+weathersit    -483.3      125.9  -3.838 0.000135 ***
+temp          2414.0     2262.2   1.067 0.286277    
+atemp         4483.3     2558.4   1.752 0.080132 .  
+hum          -1936.8      495.6  -3.908 0.000102 ***
+windspeed    -3963.3      729.0  -5.437 7.42e-08 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 0.7273 on 724 degrees of freedom
+Residual standard error: 1409 on 724 degrees of freedom
 Multiple R-squared:  0.4754,    Adjusted R-squared:  0.4711 
 F-statistic: 109.4 on 6 and 724 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>df</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>weathersit</span>, y <span class='op'>=</span> <span class='va'>cnt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>atemp</span>, y <span class='op'>=</span> <span class='va'>cnt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Figure 3: Regression of CNT on Weather Inclemency"</span>,</span>
-<span>       x <span class='op'>=</span> <span class='st'>"Weather Inclemency"</span>,</span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Figure 3: Regression of CNT on Feeling Temperature"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Normalized feeling temperature (Celsius)"</span>,</span>
 <span>       y <span class='op'>=</span> <span class='st'>"CNT"</span><span class='op'>)</span></span></code></pre>
 </div>
 <img src="index_files/figure-html5/unnamed-chunk-5-1.png" width="624" />
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>df</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>atemp</span>, y <span class='op'>=</span> <span class='va'>cnt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>hum</span>, y <span class='op'>=</span> <span class='va'>cnt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Figure 4: Regression of CNT on Feeling Temperature"</span>,</span>
-<span>       x <span class='op'>=</span> <span class='st'>"Normalized feeling temperature (Celsius)"</span>,</span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Figure 4: Regression of CNT on Humidity"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Normalized Humidity"</span>,</span>
 <span>       y <span class='op'>=</span> <span class='st'>"CNT"</span><span class='op'>)</span></span></code></pre>
 </div>
 <img src="index_files/figure-html5/unnamed-chunk-5-2.png" width="624" />
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>df</span> <span class='op'>|&gt;</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>hum</span>, y <span class='op'>=</span> <span class='va'>cnt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Figure 5: Regression of CNT on Humidity"</span>,</span>
-<span>       x <span class='op'>=</span> <span class='st'>"Normalized Humidity"</span>,</span>
-<span>       y <span class='op'>=</span> <span class='st'>"CNT"</span><span class='op'>)</span></span></code></pre>
-</div>
-<img src="index_files/figure-html5/unnamed-chunk-5-3.png" width="624" />
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>df</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>windspeed</span>, y <span class='op'>=</span> <span class='va'>cnt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Figure 6: Regression of CNT on Wind Speed"</span>,</span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Figure 5: Regression of CNT on Wind Speed"</span>,</span>
 <span>       x <span class='op'>=</span> <span class='st'>"Normalized Wind Speed"</span>,</span>
 <span>       y <span class='op'>=</span> <span class='st'>"CNT"</span><span class='op'>)</span></span></code></pre>
 </div>
-<p><img src="index_files/figure-html5/unnamed-chunk-5-4.png" width="624" /></p>
+<p><img src="index_files/figure-html5/unnamed-chunk-5-3.png" width="624" /></p>
 </div>
 <h2 id="conclusion">Conclusion</h2>
 <ul>

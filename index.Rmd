@@ -58,7 +58,7 @@ dist_cnt
 ## Result
 * figure 2: one bivariate regression (showing the relationship between just the predictor you are most interested in and your outcome)
 * one multivariate regression (where you control for a couple of confounders)
-* separate plots of the main relationship of interest (figure 3, 4, 5, 6)
+* separate plots of the main relationship of interest (figure 3, 4, 5)
 * a summary and discussion of results in substantive context
 * interpret (in plain English) the main coefficient of interest in your regression, comment on the statistical significance of the estimated coefficient, and say whether or not you believe the coefficient to represent a causal effect
 
@@ -82,18 +82,10 @@ summary(reg_all)
 
 ```{r}
 df |>
-  ggplot(aes(x = weathersit, y = cnt)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE) +
-  labs(title = "Figure 3: Regression of CNT on Weather Inclemency",
-       x = "Weather Inclemency",
-       y = "CNT")
-
-df |>
   ggplot(aes(x = atemp, y = cnt)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
-  labs(title = "Figure 4: Regression of CNT on Feeling Temperature",
+  labs(title = "Figure 3: Regression of CNT on Feeling Temperature",
        x = "Normalized feeling temperature (Celsius)",
        y = "CNT")
 
@@ -101,7 +93,7 @@ df |>
   ggplot(aes(x = hum, y = cnt)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
-  labs(title = "Figure 5: Regression of CNT on Humidity",
+  labs(title = "Figure 4: Regression of CNT on Humidity",
        x = "Normalized Humidity",
        y = "CNT")
 
@@ -109,7 +101,7 @@ df |>
   ggplot(aes(x = windspeed, y = cnt)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
-  labs(title = "Figure 6: Regression of CNT on Wind Speed",
+  labs(title = "Figure 5: Regression of CNT on Wind Speed",
        x = "Normalized Wind Speed",
        y = "CNT")
 ```
