@@ -40,8 +40,8 @@ daily count of rental bikes between years 2011 and 2012 in Capital bikeshare sys
 | `cnt`        | Count of total rental bikes including both casual and registered.                                                                  |
 
 ```{r}
-df <- read.csv("day.csv")
-df <- df[,8:13]
+df_raw <- read.csv("day.csv")
+df <- df_raw[, c(8, 9, 10, 11, 12, 13, 16)]
 
 dist_cnt <- df |>
   ggplot(aes(x = cnt)) +
