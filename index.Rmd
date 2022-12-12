@@ -47,8 +47,9 @@ df <- df[,8:16]
 dist_cnt <- df |>
   ggplot(aes(x = cnt)) +
   geom_histogram() +
-  labs(title = "Figure 1: Distribution of Count of Total Rental Bikes",
-       x = "Count of total rental bikes")
+  labs(title = "Figure 1: Distribution of CNT",
+       x = "Count of CNT",
+       y = "Count")
 dist_cnt
 ```
 
@@ -62,7 +63,6 @@ dist_cnt
 * interpret (in plain English) the main coefficient of interest in your regression, comment on the statistical significance of the estimated coefficient, and say whether or not you believe the coefficient to represent a causal effect
 
 ```{r}
-df <- data.frame(scale(df))
 reg_main <- lm (cnt ~ weathersit, data = df)
 summary(reg_main)
 
@@ -72,7 +72,7 @@ df |>
   geom_smooth(method = "lm", se = FALSE) +
   labs(title = "Figure 2: Regression of CNT on Weather Inclemency",
        x = "Weather Inclemency",
-       y = "Count of total rental bikes")
+       y = "CNT")
 ```
 
 ```{r}
@@ -87,7 +87,7 @@ df |>
   geom_smooth(method = "lm", se = FALSE) +
   labs(title = "Figure 3: Regression of CNT on Weather Inclemency",
        x = "Weather Inclemency",
-       y = "Count of total rental bikes")
+       y = "CNT")
 
 df |>
   ggplot(aes(x = atemp, y = cnt)) +
@@ -95,7 +95,7 @@ df |>
   geom_smooth(method = "lm", se = FALSE) +
   labs(title = "Figure 4: Regression of CNT on Feeling Temperature",
        x = "Normalized feeling temperature (Celsius)",
-       y = "Count of total rental bikes")
+       y = "CNT")
 
 df |>
   ggplot(aes(x = hum, y = cnt)) +
@@ -103,7 +103,7 @@ df |>
   geom_smooth(method = "lm", se = FALSE) +
   labs(title = "Figure 5: Regression of CNT on Humidity",
        x = "Normalized Humidity",
-       y = "Count of total rental bikes")
+       y = "CNT")
 
 df |>
   ggplot(aes(x = windspeed, y = cnt)) +
@@ -111,7 +111,7 @@ df |>
   geom_smooth(method = "lm", se = FALSE) +
   labs(title = "Figure 6: Regression of CNT on Wind Speed",
        x = "Normalized Wind Speed",
-       y = "Count of total rental bikes")
+       y = "CNT")
 ```
 
 
