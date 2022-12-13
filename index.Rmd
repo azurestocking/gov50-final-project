@@ -18,9 +18,9 @@ library(dplyr)
 
 
 ## Introduction
-* where you introduce the research question
-* hypothesis
-* briefly describe why it is interesting
+Bike sharing is a transport service where bicycles provided by governments or private companies are available for public use on a rental basis. Recent years have witnessed an inflation of people's interest in bike-sharing infrastructure and investment due to its role in mitigating congestion and pollution. Compared to the traditional sharing project, the daily operation of the new generation of bike sharing relies on smartphone technology. In this, it is able to detect and record valuable information for governments, companies, and researchers, which offers insight into urban commute patterns and usage habits. By analyzing the factors that affect the number of shared bikes borrowed, city and business owners are able to understand the demand for rental bikes better, thus distributing them more responsively.
+
+In this study, I plan to investigate to what extent inclement weathers influence the count of total rental bikes borrowed by both casual and registered users. I hypothesize that the count decreases as weather inclemency escalates. When it is sunny or cloudy, I expect that people are more likely to use and rent a bike; when it is misty, rainy, or snowy, people tends to use other vehicles that reduces their exposure to adversities like low visibility and precipitation.
 
 
 
