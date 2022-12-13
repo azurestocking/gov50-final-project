@@ -76,7 +76,7 @@ df |>
   ) |>
   ggplot(aes(x = weather, y = cnt)) +
   geom_boxplot() +
-  labs(title = "Figure 2: Relationship between CNT and Weather",
+  labs(title = "Figure 2: Relationship Between CNT and Weather",
        x = "Weather",
        y = "CNT")
 ```
@@ -98,7 +98,7 @@ summary(reg_all)
 df |>
   ggplot(aes(x = atemp, y = cnt)) +
   geom_point() +
-  geom_smooth(method = "loess", se = FALSE) +
+  geom_smooth(method = "lm", se = FALSE) +
   labs(title = "Figure 3: Regression of CNT on Feeling Temperature",
        x = "Normalized feeling temperature",
        y = "CNT")
