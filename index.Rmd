@@ -1,7 +1,7 @@
 ---
-title: "TITLE"
-author: "AUTHOR"
-description: "DESCRIPTION"
+title: "More Weather Inclemency, Less Shared Bike?"
+author: "Jinming Li"
+description: "Final Project for 2022 Fall GOV50 in Harvard College"
 output:
   distill::distill_article:
     self_contained: false
@@ -27,7 +27,7 @@ In this study, I plan to investigate to what extent inclement weathers influence
 ## Data
 This dataset is based on the system data of a bike sharing company, Washington, D.C.'s Capital Bikeshare and weather information from http://www.freemeteo.com, showing the daily count of rental bikes between years 2011 and 2012 in the system with the corresponding weather conditions.
 
-The following table shows the variables excerpted from the raw dataset. It has 6 independent variables, including `workingday`, `weathersit`, `temp`, `atemp`, `hum`, and `windspeed` and 1 dependent variable, `cnt`. Precisely, the `cnt` is a discrete variable of the total number of bikes borrowed by both casual and registered users. The `workingday` is a dichotomous variable; if the day is neither weekend nor holiday is 1, otherwise is 0. The `weathersit` is a categorical variable coded from 1 to 4 in accordance with the weather inclemency. The `temp` is the normalized temperature in Celsius whose values are derived via $\frac{t - t_{min}}{t_{max} - t_{min}}$. The `atemp` is the normalized feeling temperature in Celsius whose values are derived via $\frac{t - t_{min}}{t_{max} - t_{min}}$. The `hum` is the normalized humidity where the values are divided to 100. The `windspeed` is the normalized wind speed where the values are divided to 67.
+The following table shows the variables excerpted from the raw dataset. It has 6 independent variables, including `workingday`, `weathersit`, `temp`, `atemp`, `hum`, and `windspeed` and 1 dependent variable, `cnt`. Precisely, the `cnt` is a discrete variable of the total number of bikes borrowed by both casual and registered users. The `workingday` is a dichotomous variable; if the day is neither weekend nor holiday is 1, otherwise is 0. The `weathersit` is coded from 1 to 4 in accordance with the weather inclemency. The `temp` is the normalized temperature in Celsius whose values are derived via $\frac{t - t_{min}}{t_{max} - t_{min}}$. The `atemp` is the normalized feeling temperature in Celsius whose values are derived via $\frac{t - t_{min}}{t_{max} - t_{min}}$. The `hum` is the normalized humidity where the values are divided to 100. The `windspeed` is the normalized wind speed where the values are divided to 67.
 
 This is a cross-sectional study that runs a bivariate regression of `cnt` on `weathersit` to explores the relationship between the count of rental bikes and weather inclemency and then a multivariate regression of `cnt` on all independent variables to control the confounders.
 
@@ -123,6 +123,10 @@ df |>
 
 
 ## Conclusion
-* a recap of results
-* discussion of limitations of the study
-* how to improve the study in the future (a paragraph)
+The study shows that the inclement weather has a negative impact on the count of total rental bikes borrowed and the effect decreases once we control for feeling temperature, humidity, and wind speed.
+
+This study has several limitations. The sample includes only 731 observations, which is too small to generalize the conclusion. Plus, the independent variable of weather inclemency index is coded on a 1 to 4 scale according to the severity of different types of weather. They are categorically divided into 4 bundles in the dataset, yet the segmentation is far from perfect as the differences among bundles are not linear. Thus, the inclemency should be measured by other quantifiable parameters, which in this case can be feeling temperature, humidity, wind speed, etc. In other words, those confounders possibly mediate or moderate weather's effect on the count of total rental bikes, which is not covered by the regression model that assumes the independence of data and reveals only the observable variables and the direct effects.
+
+To improve the study, we can utilize other models like structural equation model or multilevel models. Moreover, we can collect more data that might contribute the count of total rental bikes borrowed. Precisely, whether the service equipped with a dockless system and the number of bikes supplied in a given range might impact people's capability of renting a bike. The location also matters as the geographical features and hence people's commuting habits influence their willingness to use bikes. For example, in China, the service is much more prospect in Beijing than in Chongqing, because the former is a city built on the North China Plain with urban planning friendly to bikes, while the latter is a mountainous city with steep slopes in even in the downtown. 
+
+

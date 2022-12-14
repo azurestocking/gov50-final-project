@@ -88,29 +88,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>TITLE</title>
+  <title>More Weather Inclemency, Less Shared Bike?</title>
 
-  <meta property="description" itemprop="description" content="DESCRIPTION"/>
+  <meta property="description" itemprop="description" content="Final Project for 2022 Fall GOV50 in Harvard College"/>
 
 
-  <meta name="article:author" content="AUTHOR"/>
+  <meta name="article:author" content="Jinming Li"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="TITLE"/>
+  <meta property="og:title" content="More Weather Inclemency, Less Shared Bike?"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="DESCRIPTION"/>
+  <meta property="og:description" content="Final Project for 2022 Fall GOV50 in Harvard College"/>
   <meta property="og:locale" content="en_US"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="TITLE"/>
-  <meta property="twitter:description" content="DESCRIPTION"/>
+  <meta property="twitter:title" content="More Weather Inclemency, Less Shared Bike?"/>
+  <meta property="twitter:description" content="Final Project for 2022 Fall GOV50 in Harvard College"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","description","output"]}},"value":[{"type":"character","attributes":{},"value":["TITLE"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["AUTHOR"]}]}]},{"type":"character","attributes":{},"value":["DESCRIPTION"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","description","output"]}},"value":[{"type":"character","attributes":{},"value":["More Weather Inclemency, Less Shared Bike?"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Jinming Li"]}]}]},{"type":"character","attributes":{},"value":["Final Project for 2022 Fall GOV50 in Harvard College"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1493,7 +1493,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"TITLE","description":"DESCRIPTION","authors":[{"author":"AUTHOR","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}]}
+{"title":"More Weather Inclemency, Less Shared Bike?","description":"Final Project for 2022 Fall GOV50 in Harvard College","authors":[{"author":"Jinming Li","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1503,15 +1503,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>TITLE</h1>
+<h1>More Weather Inclemency, Less Shared Bike?</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p>DESCRIPTION</p>
+<p>Final Project for 2022 Fall GOV50 in Harvard College</p>
 </div>
 
 <div class="d-byline">
   
-  AUTHOR
+  Jinming Li
   
 
 </div>
@@ -1527,14 +1527,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 </div>
 <h2 id="introduction">Introduction</h2>
-<ul>
-<li>where you introduce the research question</li>
-<li>hypothesis</li>
-<li>briefly describe why it is interesting</li>
-</ul>
+<p>Bike sharing is a transport service where bicycles provided by governments or private companies are available for public use on a rental basis. Recent years have witnessed an inflation of people’s interest in bike-sharing infrastructure and investment due to its role in mitigating congestion and pollution. Compared to the traditional sharing project, the daily operation of the new generation of bike sharing relies on smartphone technology. In this, it is able to detect and record valuable information for governments, companies, and researchers, which offers insight into urban commute patterns and usage habits. By analyzing the factors that affect the number of shared bikes borrowed, city and business owners are able to understand the demand for rental bikes better, thus distributing them more responsively.</p>
+<p>In this study, I plan to investigate to what extent inclement weathers influence the count of total rental bikes borrowed by both casual and registered users. I hypothesize that the count decreases as weather inclemency escalates. When it is sunny or cloudy, I expect that people are more likely to use and rent a bike; when it is misty, rainy, or snowy, people tends to use other vehicles that reduces their exposure to adversities like low visibility and precipitation.</p>
 <h2 id="data">Data</h2>
 <p>This dataset is based on the system data of a bike sharing company, Washington, D.C.’s Capital Bikeshare and weather information from <a href="http://www.freemeteo.com" class="uri">http://www.freemeteo.com</a>, showing the daily count of rental bikes between years 2011 and 2012 in the system with the corresponding weather conditions.</p>
-<p>The following table shows the variables excerpted from the raw dataset. It has 6 independent variables, including <code>workingday</code>, <code>weathersit</code>, <code>temp</code>, <code>atemp</code>, <code>hum</code>, and <code>windspeed</code> and 1 dependent variable, <code>cnt</code>. Precisely, the <code>cnt</code> is a discrete variable of the total number of bikes borrowed by both casual and registered users. The <code>workingday</code> is a dichotomous variable; if the day is neither weekend nor holiday is 1, otherwise is 0. The <code>weathersit</code> is a categorical variable coded from 1 to 4 in accordance with the weather inclemency. The <code>temp</code> is the normalized temperature in Celsius whose values are derived via <span class="math inline">\(\frac{t - t_{min}}{t_{max} - t_{min}}\)</span>. The <code>atemp</code> is the normalized feeling temperature in Celsius whose values are derived via <span class="math inline">\(\frac{t - t_{min}}{t_{max} - t_{min}}\)</span>. The <code>hum</code> is the normalized humidity where the values are divided to 100. The <code>windspeed</code> is the normalized wind speed where the values are divided to 67.</p>
+<p>The following table shows the variables excerpted from the raw dataset. It has 6 independent variables, including <code>workingday</code>, <code>weathersit</code>, <code>temp</code>, <code>atemp</code>, <code>hum</code>, and <code>windspeed</code> and 1 dependent variable, <code>cnt</code>. Precisely, the <code>cnt</code> is a discrete variable of the total number of bikes borrowed by both casual and registered users. The <code>workingday</code> is a dichotomous variable; if the day is neither weekend nor holiday is 1, otherwise is 0. The <code>weathersit</code> is coded from 1 to 4 in accordance with the weather inclemency. The <code>temp</code> is the normalized temperature in Celsius whose values are derived via <span class="math inline">\(\frac{t - t_{min}}{t_{max} - t_{min}}\)</span>. The <code>atemp</code> is the normalized feeling temperature in Celsius whose values are derived via <span class="math inline">\(\frac{t - t_{min}}{t_{max} - t_{min}}\)</span>. The <code>hum</code> is the normalized humidity where the values are divided to 100. The <code>windspeed</code> is the normalized wind speed where the values are divided to 67.</p>
 <p>This is a cross-sectional study that runs a bivariate regression of <code>cnt</code> on <code>weathersit</code> to explores the relationship between the count of rental bikes and weather inclemency and then a multivariate regression of <code>cnt</code> on all independent variables to control the confounders.</p>
 <table>
 <colgroup>
@@ -1704,11 +1701,9 @@ F-statistic: 109.4 on 6 and 724 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p><img src="index_files/figure-html5/unnamed-chunk-5-3.png" width="624" /></p>
 </div>
 <h2 id="conclusion">Conclusion</h2>
-<ul>
-<li>a recap of results</li>
-<li>discussion of limitations of the study</li>
-<li>how to improve the study in the future (a paragraph)</li>
-</ul>
+<p>The study shows that the inclement weather has a negative impact on the count of total rental bikes borrowed and the effect decreases once we control for feeling temperature, humidity, and wind speed.</p>
+<p>This study has several limitations. The sample includes only 731 observations, which is too small to generalize the conclusion. Plus, the independent variable of weather inclemency index is coded on a 1 to 4 scale according to the severity of different types of weather. They are categorically divided into 4 bundles in the dataset, yet the segmentation is far from perfect as the differences among bundles are not linear. Thus, the inclemency should be measured by other quantifiable parameters, which in this case can be feeling temperature, humidity, wind speed, etc. In other words, those confounders possibly mediate or moderate weather’s effect on the count of total rental bikes, which is not covered by the regression model that assumes the independence of data and reveals only the observable variables and the direct effects.</p>
+<p>To improve the study, we can utilize other models like structural equation model or multilevel models. Moreover, we can collect more data that might contribute the count of total rental bikes borrowed. Precisely, whether the service equipped with a dockless system and the number of bikes supplied in a given range might impact people’s capability of renting a bike. The location also matters as the geographical features and hence people’s commuting habits influence their willingness to use bikes. For example, in China, the service is much more prospect in Beijing than in Chongqing, because the former is a city built on the North China Plain with urban planning friendly to bikes, while the latter is a mountainous city with steep slopes in even in the downtown.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
